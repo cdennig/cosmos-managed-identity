@@ -20,6 +20,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee "$MI_A
 
 az aks pod-identity add --resource-group rg-cosmosrbac --cluster-name cosmosrbac --namespace default  --name "cosmos-pod-identity" --identity-resource-id $MI_ID
 
+```yaml
 apiVersion: v1
 kind: Pod
 metadata:
@@ -39,3 +40,4 @@ spec:
         value: "data"
   nodeSelector:
     kubernetes.io/os: linux
+```
