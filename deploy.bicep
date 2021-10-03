@@ -5,7 +5,7 @@ var roleDefId = guid('sql-role-definition-', principalId, cosmosDbAccount.id)
 var roleDefName = 'Custom Read/Write role'
 var roleAssignId = guid(roleDefId, principalId, cosmosDbAccount.id)
 
-@description('Object ID of the AAD identity. Must be a GUID.')
+@description('Principal ID of the managed identity')
 param principalId string
 
 // Cosmos DB Account
@@ -28,7 +28,7 @@ resource cosmosDbAccount 'Microsoft.DocumentDB/databaseAccounts@2021-06-15' = {
         name: 'EnableServerless'
       }
     ]
-    disableLocalAuth: true
+    disableLocalAuth: false // switch to 'true', if you want to disable connection strings/keys 
     databaseAccountOfferType: 'Standard'
     enableAutomaticFailover: true
     publicNetworkAccess: 'Enabled'

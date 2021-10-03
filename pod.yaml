@@ -1,0 +1,20 @@
+# contents of pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo
+  labels:
+    aadpodidbinding: "cosmos-pod-identity"
+spec:
+  containers:
+  - name: demo
+    image: chrisdennig/cosmos-mi:1.1
+    env:
+      - name: Cosmos__Uri
+        value: "https://cosmos-2varraanuegcs.documents.azure.com:443/"
+      - name: Cosmos__Db
+        value: "rbacsample"
+      - name: Cosmos__Container
+        value: "data"
+  nodeSelector:
+    kubernetes.io/os: linux
